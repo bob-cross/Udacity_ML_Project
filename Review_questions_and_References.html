@@ -1,0 +1,287 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+	<META HTTP-EQUIV="CONTENT-TYPE" CONTENT="text/html; charset=windows-1252">
+	<TITLE></TITLE>
+	<META NAME="GENERATOR" CONTENT="OpenOffice 4.1.3  (Win32)">
+	<META NAME="CREATED" CONTENT="20170920;10175372">
+	<META NAME="CHANGED" CONTENT="20170920;14061338">
+	<STYLE TYPE="text/css">
+	<!--
+		@page { margin: 0.79in }
+		P { margin-bottom: 0.08in }
+		PRE.cjk { font-family: "NSimSun", monospace }
+		A:link { so-language: zxx }
+	-->
+	</STYLE>
+</HEAD>
+<BODY LANG="en-US" DIR="LTR">
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; widows: 2; orphans: 2"><FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 10pt"><SPAN STYLE="font-style: normal"><B>Enron
+Submission Free-Response Questions</B></SPAN></FONT></FONT></FONT> 
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; widows: 2; orphans: 2">by
+Bob Cross</P>
+<P STYLE="margin-bottom: 0in"><BR>
+</P>
+<OL>
+	<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2; text-decoration: none; page-break-before: auto">
+	<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt"><I><B>Summarize
+	for us the goal of this project and how machine learning is useful
+	in trying to accomplish it. As part of your answer, give some
+	background on the dataset and how it can be used to answer the
+	project question. Were there any outliers in the data when you got
+	it, and how did you handle those? &nbsp;[relevant rubric items:
+	&ldquo;data exploration&rdquo;, &ldquo;outlier investigation&rdquo;]</B></I></FONT></FONT></FONT></P>
+</OL>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">In
+2000, Enron was one of the largest companies in the United States. By
+2002, it had collapsed into bankruptcy due to widespread fraud. In
+the resulting Federal investigation, a significant amount of
+typically confidential information entered into the public
+record,including tens of thousands of emails and detailed financial
+data for top executives. The goal of the project was to build a
+machine learning algorithm for a 'person of interest identifier'
+based on financial and email data made public as a result of the
+Enron scandal. Prior to my work, this data was curated with a
+hand-generated list of persons of interest in the fraud case, which
+means individuals who were indicted, reached a settlement or plea
+deal with the government or in exchange for prosecution immunity. </FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">There
+are 146 Enron executives (data points) in the dataset. There are 3
+types of  features in the dataset; financial features, email features
+and POI labels.  The entire features list is as follows:</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">features_list
+= [&quot;poi&quot;, &quot;salary&quot;, &quot;bonus&quot;,
+&quot;ratio_from_poi_email&quot;, &quot;ratio_to_poi_email&quot;,
+'deferral_payments', 'total_payments', 'total_stock_value',
+'shared_receipt_with_poi', 'restricted_stock', </FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"> <FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">'exercised_stock_options',
+'bonus', 'restricted_stock_deferred', 'expenses', 'loan_advances',</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"> <FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">'other',
+'director_fees', 'deferred_income', 'long_term_incentive']</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">Initial
+data exploration noted three data points which I considered outliers;
+&ldquo;TOTAL&rdquo;, &ldquo;THE TRAVEL AGENCY IN THE PARK&rdquo;  and
+&ldquo;YEAP SOON&rdquo;. The &ldquo;TOTAL&rdquo; data point was
+readily apparent when plotting the salary against bonus features. The
+other two outlier data points were noted when reviewing the list of
+Enron Executives (list of data points). These two points were some
+sort of entity and in fact not individuals. These two points may well
+be interesting analysis for a fraud investigation yet were considered
+to be noise in the email analysis.  All three of these outliers were
+removed using the pop function prior to deeper analysis.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<OL START=2>
+	<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2; text-decoration: none; page-break-before: auto">
+	<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt"><I><B>What
+	features did you end up using in your POI identifier, and what
+	selection process did you use to pick them? Did you have to do any
+	scaling? Why or why not? As part of the assignment, you should
+	attempt to engineer your own feature that does not come ready-made
+	in the dataset -- explain what feature you tried to make, and the
+	rationale behind it. (You do not necessarily have to use it in the
+	final analysis, only engineer and test it.) In your feature
+	selection step, if you used an algorithm like a decision tree,
+	please also give the feature importances of the features that you
+	use, and if you used an automated feature selection function like
+	SelectKBest, please report the feature scores and reasons for your
+	choice of parameter values. &nbsp;[relevant rubric items: &ldquo;create
+	new features&rdquo;, &ldquo;intelligently select features&rdquo;,
+	&ldquo;properly scale features&rdquo;]</B></I></FONT></FONT></FONT></P>
+</OL>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">After
+the initial data exploration, I created two new features
+(&ldquo;ratio_from_poi_email&rdquo; and &ldquo;ratio_to_poi_email&rdquo;)
+to better visualize the data. The thought behind creating these two
+new features was to reduce the to/from email information to a
+percentage of to/from poi email thus focusing the data  on
+inter-action with poi. Later, in feature ranking these two new
+features showed signifcance and were included in the final algorithm.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"> <FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">I
+utilized Naive Bayes and Decision Trees in doing my work. I felt most
+comfortable with these two models and the accuracy prediction they
+proved appropriate. Therefore, I did not use scaling in my work.
+Scaling has little to no affect in these models because they provide
+vertical and horizontal boundary lines. Scaling is most appropriate
+for SVMs and clustering models which draw decision boundaries based
+on a trade off differential of each feature; ie scaling would then
+magnify the trade off and presumably provide a better and more visual
+decision boundary.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">I
+used a manual process in selecting the final features to be used in
+my final algorithm. This involved numerous iterations removing
+various features over the dataset. I utilized the Naive Bayes
+predictions and Decision Tree predictions.  Additionally, I used the
+Numpy np.argsort(importance) function for feature ranking and to
+assist in the final feature selection. Below is feature importance
+ranking of the final seven features I chose for my algorithm:</FONT></FONT></FONT></P>
+<PRE CLASS="western" STYLE="border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; text-align: left; widows: 2; orphans: 2; text-decoration: none"><FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">Feature Ranking: </FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">1 feature ratio_from_poi_email (0.353149634642)</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">2 feature ratio_to_poi_email (0.228476810976)</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">3 feature total_payments (0.143287169993)</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">4 feature total_stock_value (0.123586020969)</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">5 feature shared_receipt_with_poi (0.112300910557)</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">6 feature restricted_stock (0.0391994528635)</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">7 feature exercised_stock_options (0.0)</FONT></FONT></FONT></PRE><P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<OL START=2>
+	<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+	<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt"><I><B>What
+	algorithm did you end up using? What other one(s) did you try? How
+	did model performance differ between algorithms? &nbsp;[relevant
+	rubric item: &ldquo;pick an algorithm&rdquo;]</B></I></FONT></FONT></FONT></P>
+</OL>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+I decide to use the Decision Tree algorithm after comparing
+performance with the Naive Bayes algorithm. The comparison of the
+accuracy, run time, precision and recall of the two algorithms on the
+entire feature list is presented below.</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+clf = GaussianNB()</P>
+<PRE CLASS="western" STYLE="border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; text-align: left; widows: 2; orphans: 2"><FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">0.255813953488</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">NB algorithm time: 0.002 s</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">precision: 0.5</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">recall: 0.4</FONT></FONT></FONT></PRE><P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+clf = DecisionTreeClassifier()</P>
+<PRE CLASS="western" STYLE="border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; text-align: left; widows: 2; orphans: 2"><FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">accuracy 0.883720930233</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">Decision tree algorithm time: 0.005 s</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">precision: 0.5</FONT></FONT></FONT>
+<FONT COLOR="#000000"><FONT FACE="monospace"><FONT SIZE=2 STYLE="font-size: 10pt">recall: 0.4</FONT></FONT></FONT></PRE><P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt"><I><B>What
+does it mean to tune the parameters of an algorithm, and what can
+happen if you don&rsquo;t do this well? &nbsp;How did you tune the
+parameters of your particular algorithm? What parameters did you
+tune? (Some algorithms do not have parameters that you need to tune
+-- if this is the case for the one you picked, identify and briefly
+explain how you would have done it for the model that was not your
+final choice or a different model that does utilize parameter tuning,
+e.g. a decision tree classifier). &nbsp;[relevant rubric items:
+&ldquo;discuss parameter tuning&rdquo;, &ldquo;tune the algorithm&rdquo;]</B></I></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">Tuning
+the parameters of an algorithm means an adjustment of the dataset.
+Specifically, 1) removing features or columns which do not add
+immediate value; 2) identifying categorical attributes and casting
+them into categorical features; 3) scrubbing the data for missing or
+NaN values; 4) randomly splitting or partitioning the data. I tuned
+my dataset by introducing two new variables, limiting the number of
+features and splitting the datset. If a dataset is not tumed properly
+the accuracy, recall and precision results may be low and appear to
+have noise in the data. Additionally, the reliability of the model
+may be questions. Tuning provides rigor to the analysis. As pointed
+out in the lectures, the objective is to use as few features as
+possible while maximizing the information from the dataset.</FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt"><I><B>What
+is validation, and what&rsquo;s a classic mistake you can make if you
+do it wrong? How did you validate your analysis? &nbsp;[relevant
+rubric items: &ldquo;discuss validation&rdquo;, &ldquo;validation
+strategy&rdquo;]</B></I></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt">Validation
+is a means for determining the effectiveness of a machine learning
+algorithm. Validation gives an estimate of the model performance on
+an independent dataset. It serves as a check on 'overfitting' a model
+which is a classic mistake not done correctly. In validation, if the
+test set is not properly separated from the training set then the
+model is inherently biased and cannot be relied on in the wild. I
+validated my model with the sklearn cross-validation module which
+split the original dataset into a feature and labels training set and
+a features and labels test set. The classifier was then run on the
+training set and the scoring was run on the test set. </FONT></FONT></FONT>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; font-style: normal; font-weight: normal; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2; text-decoration: none">
+<FONT COLOR="#000000"><FONT FACE="Arial"><FONT SIZE=2 STYLE="font-size: 11pt"><I><B>Give
+at least 2 evaluation metrics and your average performance for each
+of them. &nbsp;Explain an interpretation of your metrics that says
+something human-understandable about your algorithm&rsquo;s
+performance. [relevant rubric item: &ldquo;usage of evaluation
+metrics&rdquo;]</B></I></FONT></FONT></FONT></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+Precision and Recall are two evaluation metrics. My final Decision
+Tree model showed a Precision of 0.5 and a Recall of 0.6. Precision
+is the ability of the algorithm to predict or classify correctly
+given a data point is in fact true; eg it is the ratio the predicted
+number of correct classification divided by the total number of times
+the model predicted this classification.  Recall is how often the
+algorithm predicts or classifies correctly given a data point versus
+how often the algorithm predicts this particular classification for
+the data point; eg it is the ratio the predicted number of correct
+classification divided by the total number of times this
+classification was actually true.</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<BR>
+</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<U><B>References</B></U></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+Udacity forums</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+numerous StackOverflow searches</P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<A HREF="http://scikit-learn.org/stable/model_selection.html">http://scikit-learn.org/stable/model_selection.html</A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<A HREF="http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">http://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html</A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<A HREF="https://gallery.cortanaintelligence.com/Experiment/Evaluating-and-Parameter-Tuning-a-Decision-Tree-Model-1">https://gallery.cortanaintelligence.com/Experiment/Evaluating-and-Parameter-Tuning-a-Decision-Tree-Model-1</A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<A HREF="https://github.com/DariaAlekseeva/Enron_Dataset">https://github.com/DariaAlekseeva/Enron_Dataset</A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<A HREF="https://github.com/yielder/identifying-fraud-from-enron-email">https://github.com/yielder/identifying-fraud-from-enron-email</A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<A HREF="https://github.com/agapic/Data-Analyst-Nanodegree-Udacity/tree/master/Project%205%20-%20Identify%20Fraud%20from%20Enron%20Email">https://github.com/agapic/Data-Analyst-Nanodegree-Udacity/tree/master/Project%205%20-%20Identify%20Fraud%20from%20Enron%20Email</A></P>
+<P ALIGN=LEFT STYLE="margin-bottom: 0in; border: none; padding: 0in; line-height: 114%; widows: 2; orphans: 2">
+<BR>
+</P>
+</BODY>
+</HTML>
